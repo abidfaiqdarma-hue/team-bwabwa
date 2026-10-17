@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Bwabwa</title>
+<style>
+:root{--bg:#0b1020;--panel:#141c31;--panel2:#1b2742;--text:#eef3ff;--muted:#9aa9c7;--accent:#a78bfa;--pink:#f472b6;--cyan:#67e8f9}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(ellipse at 8% 8%,#29396a 0,transparent 34%),radial-gradient(ellipse at 92% 22%,#4b245a66 0,transparent 30%),linear-gradient(160deg,#10172d,#080c18 72%);color:var(--text);min-height:100vh;position:relative;overflow-x:hidden}body:before{content:"✦  ·  ✧  ·  ✦";position:absolute;top:175px;right:5px;color:#a5b4fc22;font-size:30px;letter-spacing:12px;pointer-events:none;transform:rotate(18deg)}
+header{padding:30px 18px 22px;text-align:center;position:relative}header:before{content:"✦";display:block;color:var(--pink);font-size:23px;margin-bottom:4px;text-shadow:0 0 18px #f472b677}
+.badge{display:inline-block;padding:7px 14px;border:1px solid #6676b766;border-radius:999px;color:#d7ddff;font-size:12px;letter-spacing:1.8px;background:#222e4b88;box-shadow:0 0 24px #818cf822}
+h1{margin:14px 0 8px;font-size:clamp(30px,6vw,44px);letter-spacing:-1px;text-shadow:0 4px 24px #a78bfa44}header h1{background:linear-gradient(90deg,#fff,#c4b5fd,#f9a8d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{margin:0 auto;max-width:560px;color:var(--muted);line-height:1.6}
+main{width:min(1000px,calc(100% - 28px));margin:18px auto 48px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.search{flex:1;min-width:170px;background:var(--panel);border:1px solid #2b3b60;color:var(--text);border-radius:12px;padding:13px 14px;outline:none;font-size:16px}
+.btn{border:0;border-radius:12px;padding:12px 16px;color:#081126;background:var(--accent);font-weight:700;cursor:pointer;font-size:15px;min-height:44px}
+.btn.secondary{color:var(--text);background:#263654;border:1px solid #35496f}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.member-card{overflow:hidden;background:linear-gradient(145deg,#202d4b,#111a2f 78%);border:1px solid #6476a344;border-radius:20px;box-shadow:0 14px 34px #0004;position:relative;transition:transform .18s ease,border-color .18s ease}.member-card:hover{transform:translateY(-3px);border-color:#a78bfa99}.member-card:after{content:"✧";position:absolute;right:13px;top:88px;color:#f9a8d4aa;font-size:22px;pointer-events:none}
+.member-card.theme-neon{background:linear-gradient(145deg,#202d4b,#111a2f 78%);border-color:#a78bfa99}.member-card.theme-fire{background:linear-gradient(145deg,#57251f,#24121b 78%);border-color:#fb923c99}.member-card.theme-ocean{background:linear-gradient(145deg,#123d58,#0b1a2d 78%);border-color:#38bdf899}.member-card.theme-forest{background:linear-gradient(145deg,#174333,#10251f 78%);border-color:#4ade8099}.member-card.theme-rose{background:linear-gradient(145deg,#542342,#241329 78%);border-color:#f472b699}.member-card.theme-gold{background:linear-gradient(145deg,#51401d,#211b12 78%);border-color:#facc1599}
+.member-card.theme-fire .nickname{background:#fb923c22;border-color:#fb923c77;color:#fed7aa}.member-card.theme-ocean .nickname{background:#38bdf822;border-color:#38bdf877;color:#bae6fd}.member-card.theme-forest .nickname{background:#4ade8022;border-color:#4ade8077;color:#bbf7d0}.member-card.theme-rose .nickname{background:#f472b622;border-color:#f472b677;color:#fbcfe8}.member-card.theme-gold .nickname{background:#facc1522;border-color:#facc1577;color:#fef08a}
+#detailView.theme-fire .panel{background:linear-gradient(145deg,#57251f,#24121b 78%);border-color:#fb923c99}#detailView.theme-ocean .panel{background:linear-gradient(145deg,#123d58,#0b1a2d 78%);border-color:#38bdf899}#detailView.theme-forest .panel{background:linear-gradient(145deg,#174333,#10251f 78%);border-color:#4ade8099}#detailView.theme-rose .panel{background:linear-gradient(145deg,#542342,#241329 78%);border-color:#f472b699}#detailView.theme-gold .panel{background:linear-gradient(145deg,#51401d,#211b12 78%);border-color:#facc1599}
+.photo-strip{height:132px;background:linear-gradient(135deg,#26395f,#49345f);display:flex;align-items:center;justify-content:center;overflow:hidden;color:#e0e7ff;font-size:38px;position:relative}.photo-strip:empty:after{content:"✦  BWABWA  ✦";font-size:11px;letter-spacing:3px;color:#dbeafe99}
+.photo-strip img{width:100%;height:100%;object-fit:cover;display:block}
+.card-body{padding:17px}
+.card-body h2{font-size:20px;margin:0 0 5px;overflow-wrap:anywhere}.nickname{display:inline-block;margin:0 0 11px;padding:4px 9px;border-radius:999px;background:#a78bfa20;border:1px solid #a78bfa55;color:#e9d5ff;font-size:12px;font-weight:650;overflow-wrap:anywhere}.detail-nickname{display:inline-block;color:#f9a8d4;background:#f472b61a;border:1px solid #f472b655;padding:5px 11px;border-radius:999px;font-size:13px;margin:4px 0 0}
+.card-body p{color:var(--muted);font-size:14px;line-height:1.5;margin:0 0 15px;min-height:21px}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.small-btn{background:transparent;border:1px solid #41577f;color:#dce5ff;border-radius:9px;padding:9px 12px;cursor:pointer;min-height:42px}
+.empty{border:1px dashed #405276;border-radius:18px;padding:35px 18px;text-align:center;color:var(--muted);grid-column:1/-1;line-height:1.6}
+.note{font-size:12px;color:#8fa0c2;line-height:1.5;margin-top:18px}
+footer{text-align:center;padding:0 16px 26px;color:#7181a1;font-size:12px}
+.view{display:none}
+.view.active{display:block}
+.detail-top{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.detail-title{margin:0;font-size:clamp(26px,5vw,36px);overflow-wrap:anywhere}
+.detail-sub{color:var(--muted);margin:5px 0 0}
+.panel{background:linear-gradient(145deg,#202d4b,#111a2f 78%);border:1px solid #6476a344;border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 12px 30px #0002}.panel h2:before{content:"✦ ";color:var(--pink)}
+.panel h2{font-size:18px;margin:0 0 14px}
+.profile-photo{width:100%;max-height:260px;object-fit:cover;border-radius:12px;display:none;margin-bottom:14px}
+.description-text{white-space:pre-wrap;line-height:1.7;color:#d8e2fb;overflow-wrap:anywhere}
+label{display:block;color:#bdc9e4;font-size:13px;margin:13px 0 6px}
+input,textarea{width:100%;border:1px solid #34466e;border-radius:10px;padding:12px;background:#0b1325;color:var(--text);font:inherit;font-size:16px}
+textarea{min-height:110px;resize:vertical}
+.form-actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;margin-top:15px}
+dialog{width:min(500px,calc(100% - 28px));border:1px solid #405276;border-radius:18px;background:#121b30;color:var(--text);padding:22px}
+dialog::backdrop{background:#020611bb}
+dialog h2{margin-top:0}
+.file-note{font-size:12px;color:#8fa0c2;line-height:1.5}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.photo-strip{height:125px}.toolbar .btn{width:100%}}
+
+/* Tema profil mengubah seluruh suasana halaman dan menambahkan motif khas */
+body.theme-neon{background:radial-gradient(ellipse at 10% 10%,#39306f 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#5a286b66 0,transparent 32%),linear-gradient(160deg,#11152d,#080c18 75%)}
+body.theme-fire{background:radial-gradient(ellipse at 12% 8%,#8a321e 0,transparent 38%),radial-gradient(ellipse at 92% 28%,#7c2d1266 0,transparent 34%),linear-gradient(160deg,#281018,#100911 75%)}
+body.theme-ocean{background:radial-gradient(ellipse at 12% 8%,#155e75 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#164e6380 0,transparent 34%),linear-gradient(160deg,#071b2b,#06101d 75%)}
+body.theme-forest{background:radial-gradient(ellipse at 12% 8%,#166534 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#14532d80 0,transparent 34%),linear-gradient(160deg,#09251d,#07120f 75%)}
+body.theme-rose{background:radial-gradient(ellipse at 12% 8%,#831843 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#9d174d66 0,transparent 34%),linear-gradient(160deg,#281022,#100912 75%)}
+body.theme-gold{background:radial-gradient(ellipse at 12% 8%,#854d0e 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#a1620766 0,transparent 34%),linear-gradient(160deg,#261d0b,#100e08 75%)}
+body.theme-neon:before{content:"✦ · ✧ · ✦ · ✧";color:#c4b5fd44}
+body.theme-fire:before{content:"🔥  ✹  🔥  ✹";color:#fb923c55;transform:rotate(-12deg)}
+body.theme-ocean:before{content:"〰  ≋  🌊  ≋";color:#67e8f955;transform:rotate(8deg)}
+body.theme-forest:before{content:"❧  ✿  ❧  ✿";color:#86efac55;transform:rotate(-8deg)}
+body.theme-rose:before{content:"❀  ✿  ❀  ✿";color:#f9a8d455;transform:rotate(12deg)}
+body.theme-gold:before{content:"♛  ✧  ♛  ✧";color:#fde04755;transform:rotate(-8deg)}
+#detailView{position:relative}#detailView:before{display:block;text-align:center;font-size:22px;letter-spacing:12px;margin:0 0 12px;opacity:.8;content:"✦  ✧  ✦";color:#c4b5fd}
+#detailView.theme-fire:before{content:"🔥  ✹  🔥";color:#fdba74}#detailView.theme-ocean:before{content:"〰  🌊  〰";color:#7dd3fc}#detailView.theme-forest:before{content:"❧  🌿  ❧";color:#86efac}#detailView.theme-rose:before{content:"❀  🌸  ❀";color:#f9a8d4}#detailView.theme-gold:before{content:"♛  ✨  ♛";color:#fde047}
+#detailView.theme-neon .panel{background:linear-gradient(145deg,#29204cdd,#11172ddd);border-color:#c4b5fd99}
+#detailView.theme-neon .detail-nickname{color:#ddd6fe;background:#a78bfa22;border-color:#c4b5fd77}
+#detailView.theme-fire .detail-nickname{color:#fed7aa;background:#fb923c22;border-color:#fb923c77}
+#detailView.theme-ocean .detail-nickname{color:#bae6fd;background:#38bdf822;border-color:#38bdf877}
+#detailView.theme-forest .detail-nickname{color:#bbf7d0;background:#4ade8022;border-color:#4ade8077}
+#detailView.theme-rose .detail-nickname{color:#fbcfe8;background:#f472b622;border-color:#f472b677}
+#detailView.theme-gold .detail-nickname{color:#fef08a;background:#facc1522;border-color:#facc1577}
+.member-card.theme-neon:after{content:"✧ ✦";color:#c4b5fd99}.member-card.theme-fire:after{content:"🔥 ✹";color:#fdba7499}.member-card.theme-ocean:after{content:"〰 ≋";color:#7dd3fc99}.member-card.theme-forest:after{content:"❧ ❀";color:#86efac99}.member-card.theme-rose:after{content:"❀ ✿";color:#f9a8d499}.member-card.theme-gold:after{content:"♛ ✧";color:#fde04799}
+
+.auth-panel{margin-bottom:14px}.auth-panel h2,.panel h2{margin-top:0}.auth-panel [hidden],#appearancePanel[hidden]{display:none!important}button:disabled{opacity:.55;cursor:wait}body{background-repeat:no-repeat;background-size:cover;background-position:center} 
+</style>
+</head>
+<body>
+<header>
+  <span class="badge">RUANG CIRCLE</span>
+  <h1>Team Bwabwa</h1>
+  <p>Profil anggota circle dan halaman deskripsi masing-masing.</p>
+</header>
+<main>
+  <section id="authPanel" class="panel auth-panel">
+    <h2>Akun anggota</h2>
+    <p id="authStatus" class="description-text">Semua orang bisa melihat profil anggota. Login diperlukan untuk menyimpan tema dan wallpaper pribadi.</p>
+    <div id="authFormWrap">
+      <label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" placeholder="Email" required>
+      <label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Minimal 6 karakter" required>
+      <div class="form-actions"><button class="btn" id="loginBtn" type="button">Login</button><button class="btn secondary" id="registerBtn" type="button">Buat akun</button></div>
+    </div>
+    <button class="btn secondary" id="logoutBtn" type="button" hidden>Logout</button>
+  </section>
+  <section id="appearancePanel" class="panel" hidden>
+    <h2>Tampilan pribadiku</h2>
+    <label for="personalTheme">Tema website</label>
+    <select id="personalTheme" style="width:100%;border:1px solid #34466e;border-radius:10px;padding:12px;background:#0b1325;color:var(--text);font:inherit;font-size:16px">
+      <option value="neon">💜 Neon Galaxy</option><option value="fire">🔥 Fire</option><option value="ocean">🌊 Ocean</option><option value="forest">🌿 Forest</option><option value="rose">🌸 Rose</option><option value="gold">👑 Gold</option>
+    </select>
+    <label for="wallpaperUrl">Wallpaper pribadi (URL gambar, opsional)</label>
+    <input id="wallpaperUrl" type="url" placeholder="https://contoh.com/wallpaper.jpg">
+    <div class="form-actions"><button class="btn" id="saveAppearanceBtn" type="button">Simpan tampilan</button><button class="btn secondary" id="clearWallpaperBtn" type="button">Hapus wallpaper</button></div>
+    <p class="file-note">Tampilan ini hanya berlaku untuk akunmu, tidak mengubah tampilan anggota lain.</p>
+  </section>
+  <section id="homeView" class="view active">
+    <div class="toolbar">
+      <input class="search" id="search" type="search" placeholder="Cari anggota..." aria-label="Cari anggota">
+      <button class="btn" id="addBtn" type="button">＋ Tambah anggota</button>
+    </div>
+    <div class="grid" id="members"></div>
+    <p class="note">Semua orang bisa melihat profil dan deskripsi anggota. Hanya admin yang bisa mengelola anggota; login diperlukan untuk menyimpan tema dan wallpaper pribadi.</p>
+  </section>
+
+  <section id="detailView" class="view">
+    <div class="detail-top">
+      <button class="btn secondary" id="backBtn" type="button">← Kembali</button>
+      <div><h1 class="detail-title" id="detailName">Deskripsi anggota</h1><div class="detail-nickname" id="detailNickname" hidden></div><p class="detail-sub">Halaman khusus anggota ini ✦</p></div>
+    </div>
+    <div class="panel">
+      <h2>Deskripsi</h2>
+      <img id="detailPhoto" class="profile-photo" alt="Foto anggota">
+      <div id="descriptionText" class="description-text">Belum ada deskripsi. Tekan Edit deskripsi untuk mengisi.</div>
+      <div class="form-actions"><button class="btn secondary" id="deleteDetailBtn" type="button">🗑️ Hapus anggota</button><button class="btn" id="editDescriptionBtn" type="button">✏️ Edit deskripsi</button></div>
+    </div>
+  </section>
+</main>
+<footer>Team Bwabwa · Ruang kecil untuk kelompok kalian</footer>
+
+<dialog id="memberDialog">
+<form id="memberForm">
+  <h2 id="memberDialogTitle">Tambah anggota</h2>
+  <label for="memberName">Nama anggota</label>
+  <input id="memberName" maxlength="60" placeholder="Masukkan nama anggota" required>
+  <label for="memberNickname">Title / julukan (opsional)</label>
+  <input id="memberNickname" maxlength="60" placeholder="Contoh: Ketua, Si Paling Sigma, MVP">
+  <label for="memberTheme">Tema profil</label>
+  <select id="memberTheme" style="width:100%;border:1px solid #34466e;border-radius:10px;padding:12px;background:#0b1325;color:var(--text);font:inherit;font-size:16px">
+    <option value="neon">💜 Neon Galaxy</option><option value="fire">🔥 Fire</option><option value="ocean">🌊 Ocean</option><option value="forest">🌿 Forest</option><option value="rose">🌸 Rose</option><option value="gold">👑 Gold</option>
+  </select>
+  <label for="memberPhoto">Foto anggota (opsional)</label>
+  <input id="memberPhoto" type="file" accept="image/*">
+  <p class="file-note">Foto akan tampil hanya di bagian atas kotak anggota dan di halaman deskripsi.</p>
+  <div class="form-actions"><button class="btn secondary" type="button" id="cancelMember">Batal</button><button class="btn" type="submit">Simpan</button></div>
+</form>
+</dialog>
+
+<dialog id="contentDialog">
+<form id="contentForm">
+  <h2 id="contentTitle">Edit deskripsi</h2>
+  <label for="contentInput" id="contentLabel">Deskripsi</label>
+  <textarea id="contentInput" maxlength="10000" placeholder="Tulis di sini..."></textarea>
+  <div class="form-actions"><button class="btn secondary" type="button" id="cancelContent">Batal</button><button class="btn" type="submit">Simpan</button></div>
+</form>
+</dialog>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+(function(){
+const firebaseConfig = {
+  apiKey: "AIzaSyDnuB3qhPQR0N_1WfNU1tXGdphUu25Ut6c",
+  authDomain: "team-bwabwa2.firebaseapp.com",
+  projectId: "team-bwabwa2",
+  storageBucket: "team-bwabwa2.firebasestorage.app",
+  messagingSenderId: "905403141068",
+  appId: "1:905403141068:web:2c9fe1b8b4e4037f6d2b69",
+  measurementId: "G-VETFQ7KKBK"
+};
+const ADMIN_UID = "gHCYGYbrDeSV4F9Vo1aXwYS8VU92";
+const LEGACY_KEY="circle-kita-members-v2";
+const $=id=>document.getElementById(id);
+const app=firebase.apps.length?firebase.app():firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
+const db=firebase.firestore();
+let members=[],activeId=null,contentMode="description",pendingPhoto="",activeEditId=null,photoReadPending=false,currentUser=null,unsubMembers=null,unsubPrefs=null;
+let personalPrefs={theme:"neon",wallpaperUrl:""};
+function isAdmin(){return !!currentUser&&currentUser.uid===ADMIN_UID}
+function setStatus(msg){$("authStatus").textContent=msg}
+function setBusy(b){["loginBtn","registerBtn"].forEach(id=>$(id).disabled=b)}
+function applyAppearance(){
+ document.body.className="theme-"+(personalPrefs.theme||"neon");
+ document.body.style.backgroundImage=personalPrefs.wallpaperUrl?`linear-gradient(#080c18aa,#080c18aa),url("${personalPrefs.wallpaperUrl.replace(/"/g,'%22')}")`:"";
+ document.body.style.backgroundSize=personalPrefs.wallpaperUrl?"cover":"";
+ document.body.style.backgroundPosition=personalPrefs.wallpaperUrl?"center":"";
+ document.body.style.backgroundAttachment=personalPrefs.wallpaperUrl?"fixed":"";
+ $("personalTheme").value=personalPrefs.theme||"neon";
+ $("wallpaperUrl").value=personalPrefs.wallpaperUrl||"";
+}
+function initials(name){return (String(name||"").trim()[0]||"👤").toUpperCase()}
+function setControls(){
+ const logged=!!currentUser;
+ $("authFormWrap").hidden=logged;$("logoutBtn").hidden=!logged;$("appearancePanel").hidden=!logged;
+ $("addBtn").hidden=!isAdmin();$("deleteDetailBtn").hidden=!isAdmin();$("editDescriptionBtn").hidden=!isAdmin();
+ if(logged){setStatus((isAdmin()?"Login sebagai admin: ":"Login sebagai anggota: ")+currentUser.email);}
+ else setStatus("Semua orang bisa melihat profil anggota. Login diperlukan untuk menyimpan tema dan wallpaper pribadi.");
+}
+async function loadPrefs(uid){
+ if(unsubPrefs)unsubPrefs();
+ unsubPrefs=db.collection("userPreferences").doc(uid).onSnapshot(doc=>{
+  const data=doc.exists?doc.data():{};
+  personalPrefs={theme:data.theme||"neon",wallpaperUrl:data.wallpaperUrl||""};applyAppearance();
+ },err=>{console.error(err);setStatus("Gagal memuat tampilan pribadi. Periksa Firestore Rules.")});
+}
+function startMembersListener(){
+ if(unsubMembers)unsubMembers();
+ unsubMembers=db.collection("members").onSnapshot(async snap=>{
+  members=snap.docs.map(d=>({id:d.id,...d.data()}));
+  if(isAdmin()&&snap.empty){
+   // Import legacy browser-only members once, when the shared collection is empty.
+   let old=[];try{old=JSON.parse(localStorage.getItem(LEGACY_KEY)||"[]")}catch(e){}
+   if(old.length){
+    try{const batch=db.batch();old.forEach(m=>{const id=String(m.id||Date.now()+Math.random().toString(16).slice(2));const ref=db.collection("members").doc(id);batch.set(ref,{name:m.name||"Anggota",nickname:m.nickname||"",theme:m.theme||"neon",photo:m.photo||"",description:m.description||"",createdAt:firebase.firestore.FieldValue.serverTimestamp()})});await batch.commit();setStatus("Data anggota lama berhasil dipindahkan ke database online.");return}catch(e){console.error(e);alert("Impor data lama gagal. Periksa Rules dan ukuran foto.")}
+   }
+  }
+  if(activeId&&!members.some(m=>m.id===activeId)){activeId=null;showHome()}
+  render();if(activeId)showDetail(activeId);
+ },err=>{console.error(err);alert("Tidak bisa membaca database. Periksa Firestore Rules.")});
+}
+async function saveMember(data,id){
+ if(!isAdmin())throw new Error("Hanya admin yang bisa mengelola anggota.");
+ if(data.photo&&data.photo.length>700000)throw new Error("Foto terlalu besar untuk database. Pilih foto yang lebih kecil.");
+ const payload={name:data.name,nickname:data.nickname||"",theme:data.theme||"neon",photo:data.photo||"",description:data.description||""};
+ if(id)await db.collection("members").doc(id).set(payload,{merge:true});else await db.collection("members").add({...payload,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+}
+async function saveMemberChanges(id,patch){if(!isAdmin())throw new Error("Hanya admin yang bisa mengelola anggota.");await db.collection("members").doc(id).set(patch,{merge:true})}
+function showHome(){$("detailView").classList.remove("active");$("homeView").classList.add("active");activeId=null;render();window.scrollTo(0,0)}
+function showDetail(id){const m=members.find(x=>x.id===id);if(!m)return;activeId=id;$("homeView").classList.remove("active");$("detailView").classList.add("active");$("detailView").className="view active theme-"+(m.theme||"neon");$("detailName").textContent=m.name||"Anggota";const nick=$("detailNickname");if(m.nickname&&m.nickname.trim()){nick.textContent="✦ "+m.nickname;nick.hidden=false}else{nick.textContent="";nick.hidden=true}$("descriptionText").textContent=m.description||"Belum ada deskripsi.";const img=$("detailPhoto");if(m.photo){img.src=m.photo;img.style.display="block"}else{img.removeAttribute("src");img.style.display="none"}$("deleteDetailBtn").hidden=!isAdmin();$("editDescriptionBtn").hidden=!isAdmin();window.scrollTo(0,0)}
+async function deleteMember(id){if(!isAdmin()){alert("Hanya admin yang bisa menghapus anggota.");return}const m=members.find(x=>x.id===id);if(!m)return;if(!confirm('Yakin ingin menghapus anggota "'+m.name+'" beserta foto dan deskripsinya?'))return;try{await db.collection("members").doc(id).delete();if(activeId===id)showHome()}catch(e){console.error(e);alert("Gagal menghapus. Periksa koneksi dan Rules Firebase.")}}
+$("deleteDetailBtn").addEventListener("click",()=>{if(activeId)deleteMember(activeId)});
+function render(){const grid=$("members");grid.innerHTML="";const q=$("search").value.trim().toLowerCase();const filtered=members.filter(m=>(m.name||"").toLowerCase().includes(q)||(m.nickname||"").toLowerCase().includes(q));if(!filtered.length){const e=document.createElement("div");e.className="empty";e.textContent=members.length?"Tidak ada anggota yang cocok.":(currentUser?"Belum ada anggota. Admin dapat menambahkan anggota.":"Belum ada anggota di database Team Bwabwa.");grid.appendChild(e);return}filtered.forEach(m=>{const card=document.createElement("article");card.className="member-card theme-"+(m.theme||"neon");const photo=document.createElement("div");photo.className="photo-strip";if(m.photo){const img=document.createElement("img");img.src=m.photo;img.alt="Foto "+m.name;photo.appendChild(img)}else photo.textContent=initials(m.name);const body=document.createElement("div");body.className="card-body";const title=document.createElement("h2");title.textContent=m.name||"Anggota";const nickname=document.createElement("div");nickname.className="nickname";nickname.textContent=m.nickname?"✦ "+m.nickname:"✧ Anggota Team Bwabwa";const preview=document.createElement("p");preview.textContent=m.description?(m.description.length>80?m.description.slice(0,80)+"…":m.description):"Belum ada deskripsi.";const actions=document.createElement("div");actions.className="card-actions";const open=document.createElement("button");open.type="button";open.className="small-btn";open.textContent="Buka deskripsi";open.addEventListener("click",()=>showDetail(m.id));actions.append(open);if(isAdmin()){const edit=document.createElement("button");edit.type="button";edit.className="small-btn";edit.textContent="Edit profil";edit.addEventListener("click",()=>openMemberDialog(m.id));const del=document.createElement("button");del.type="button";del.className="small-btn";del.textContent="🗑️ Hapus";del.addEventListener("click",()=>deleteMember(m.id));actions.append(edit,del)}body.append(title,nickname,preview,actions);card.append(photo,body);grid.appendChild(card)})}
+function openMemberDialog(id=null){if(!isAdmin())return alert("Hanya admin yang bisa mengelola anggota.");const m=members.find(x=>x.id===id);pendingPhoto=m?.photo||"";activeEditId=id;$("memberDialogTitle").textContent=m?"Edit profil anggota":"Tambah anggota";$("memberName").value=m?.name||"";$("memberNickname").value=m?.nickname||"";$("memberPhoto").value="";$("memberTheme").value=m?.theme||"neon";$("memberDialog").showModal()}
+$("backBtn").addEventListener("click",showHome);$("search").addEventListener("input",render);$("cancelMember").addEventListener("click",()=>$("memberDialog").close());
+$("memberPhoto").addEventListener("change",()=>{const file=$("memberPhoto").files[0];if(!file)return;if(!file.type.startsWith("image/")){alert("Pilih file gambar.");$("memberPhoto").value="";return}if(file.size>20*1024*1024){alert("Ukuran foto asli maksimal 20 MB.");$("memberPhoto").value="";return}photoReadPending=true;const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{try{const maxSide=900,scale=Math.min(1,maxSide/Math.max(img.naturalWidth,img.naturalHeight));const canvas=document.createElement("canvas");canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));const ctx=canvas.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);pendingPhoto=canvas.toDataURL("image/jpeg",0.48);photoReadPending=false;if(pendingPhoto.length>700000)alert("Foto masih terlalu besar untuk database. Pilih foto yang lebih kecil.")}catch(e){photoReadPending=false;alert("Foto gagal diproses.")}};img.onerror=()=>{photoReadPending=false;alert("Foto gagal dibuka.")};img.src=reader.result};reader.onerror=()=>{photoReadPending=false;alert("Foto gagal dibaca.")};reader.readAsDataURL(file)});
+$("memberForm").addEventListener("submit",async e=>{e.preventDefault();if(!isAdmin())return alert("Hanya admin yang bisa mengelola anggota.");if(photoReadPending)return alert("Tunggu sampai foto selesai diproses.");const name=$("memberName").value.trim();if(!name)return;try{await saveMember({name,nickname:$("memberNickname").value.trim(),theme:$("memberTheme").value,photo:pendingPhoto,description:members.find(m=>m.id===activeEditId)?.description||""},activeEditId);$("memberDialog").close();}catch(err){console.error(err);alert(err.message||"Gagal menyimpan anggota. Periksa koneksi dan Rules Firebase.")}});
+$("cancelContent").addEventListener("click",()=>$("contentDialog").close());function openContent(){if(!isAdmin())return alert("Hanya admin yang bisa mengubah deskripsi.");const m=members.find(x=>x.id===activeId);if(!m)return;contentMode="description";$("contentTitle").textContent="Edit deskripsi";$("contentLabel").textContent="Deskripsi";$("contentInput").value=m.description||"";$("contentDialog").showModal()}$("editDescriptionBtn").addEventListener("click",openContent);$("contentForm").addEventListener("submit",async e=>{e.preventDefault();const m=members.find(x=>x.id===activeId);if(!m||!isAdmin())return;try{await saveMemberChanges(m.id,{description:$("contentInput").value.trim()});$("contentDialog").close()}catch(err){console.error(err);alert("Gagal menyimpan deskripsi. Periksa koneksi dan Rules Firebase.")}});
+$("loginBtn").addEventListener("click",async()=>{const email=$("authEmail").value.trim(),password=$("authPassword").value;if(!email||!password)return alert("Isi email dan password.");setBusy(true);try{await auth.signInWithEmailAndPassword(email,password)}catch(e){alert("Login gagal: "+(e.code||e.message))}finally{setBusy(false)}});
+$("registerBtn").addEventListener("click",async()=>{const email=$("authEmail").value.trim(),password=$("authPassword").value;if(!email||!password)return alert("Isi email dan password.");if(password.length<6)return alert("Password minimal 6 karakter.");setBusy(true);try{await auth.createUserWithEmailAndPassword(email,password);alert("Akun berhasil dibuat. Sekarang kamu bisa melihat data bersama.")}catch(e){alert("Pendaftaran gagal: "+(e.code||e.message))}finally{setBusy(false)}});
+$("logoutBtn").addEventListener("click",()=>auth.signOut());$("addBtn").addEventListener("click",()=>openMemberDialog());
+$("saveAppearanceBtn").addEventListener("click",async()=>{if(!currentUser)return;const theme=$("personalTheme").value,url=$("wallpaperUrl").value.trim();if(url&&!/^https:\/\//i.test(url)){alert("URL wallpaper harus dimulai dengan https://");return}try{await db.collection("userPreferences").doc(currentUser.uid).set({theme,wallpaperUrl:url},{merge:true});personalPrefs={theme,wallpaperUrl:url};applyAppearance();alert("Tampilan pribadi tersimpan.")}catch(e){console.error(e);alert("Gagal menyimpan tampilan. Pastikan Rules userPreferences sudah dipasang.")}});
+$("clearWallpaperBtn").addEventListener("click",async()=>{if(!currentUser)return;$("wallpaperUrl").value="";try{await db.collection("userPreferences").doc(currentUser.uid).set({theme:$("personalTheme").value,wallpaperUrl:""},{merge:true});personalPrefs={theme:$("personalTheme").value,wallpaperUrl:""};applyAppearance()}catch(e){alert("Gagal menghapus wallpaper. Periksa Rules Firebase.")}});
+auth.onAuthStateChanged(user=>{currentUser=user;setControls();if(unsubMembers){unsubMembers();unsubMembers=null}if(unsubPrefs){unsubPrefs();unsubPrefs=null}members=[];render();if(user){loadPrefs(user.uid)}else{personalPrefs={theme:"neon",wallpaperUrl:""};applyAppearance();showHome()}startMembersListener()});
+})();
+</script>
+</body>
+</html>
