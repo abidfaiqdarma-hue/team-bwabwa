@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Bwabwa</title>
+<style>
+:root{--bg:#0b1020;--panel:#141c31;--panel2:#1b2742;--text:#eef3ff;--muted:#9aa9c7;--accent:#a78bfa;--pink:#f472b6;--cyan:#67e8f9}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(ellipse at 8% 8%,#29396a 0,transparent 34%),radial-gradient(ellipse at 92% 22%,#4b245a66 0,transparent 30%),linear-gradient(160deg,#10172d,#080c18 72%);color:var(--text);min-height:100vh;position:relative;overflow-x:hidden}body:before{content:"✦  ·  ✧  ·  ✦";position:absolute;top:175px;right:5px;color:#a5b4fc22;font-size:30px;letter-spacing:12px;pointer-events:none;transform:rotate(18deg)}
+header{padding:30px 18px 22px;text-align:center;position:relative}header:before{content:"✦";display:block;color:var(--pink);font-size:23px;margin-bottom:4px;text-shadow:0 0 18px #f472b677}
+.badge{display:inline-block;padding:7px 14px;border:1px solid #6676b766;border-radius:999px;color:#d7ddff;font-size:12px;letter-spacing:1.8px;background:#222e4b88;box-shadow:0 0 24px #818cf822}
+h1{margin:14px 0 8px;font-size:clamp(30px,6vw,44px);letter-spacing:-1px;text-shadow:0 4px 24px #a78bfa44}header h1{background:linear-gradient(90deg,#fff,#c4b5fd,#f9a8d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{margin:0 auto;max-width:560px;color:var(--muted);line-height:1.6}
+main{width:min(1000px,calc(100% - 28px));margin:18px auto 48px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.search{flex:1;min-width:170px;background:var(--panel);border:1px solid #2b3b60;color:var(--text);border-radius:12px;padding:13px 14px;outline:none;font-size:16px}
+.btn{border:0;border-radius:12px;padding:12px 16px;color:#081126;background:var(--accent);font-weight:700;cursor:pointer;font-size:15px;min-height:44px}
+.btn.secondary{color:var(--text);background:#263654;border:1px solid #35496f}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.member-card{overflow:hidden;background:linear-gradient(145deg,#202d4b,#111a2f 78%);border:1px solid #6476a344;border-radius:20px;box-shadow:0 14px 34px #0004;position:relative;transition:transform .18s ease,border-color .18s ease}.member-card:hover{transform:translateY(-3px);border-color:#a78bfa99}.member-card:after{content:"✧";position:absolute;right:13px;top:88px;color:#f9a8d4aa;font-size:22px;pointer-events:none}
+.member-card.theme-neon{background:linear-gradient(145deg,#202d4b,#111a2f 78%);border-color:#a78bfa99}.member-card.theme-fire{background:linear-gradient(145deg,#57251f,#24121b 78%);border-color:#fb923c99}.member-card.theme-ocean{background:linear-gradient(145deg,#123d58,#0b1a2d 78%);border-color:#38bdf899}.member-card.theme-forest{background:linear-gradient(145deg,#174333,#10251f 78%);border-color:#4ade8099}.member-card.theme-rose{background:linear-gradient(145deg,#542342,#241329 78%);border-color:#f472b699}.member-card.theme-gold{background:linear-gradient(145deg,#51401d,#211b12 78%);border-color:#facc1599}
+.member-card.theme-fire .nickname{background:#fb923c22;border-color:#fb923c77;color:#fed7aa}.member-card.theme-ocean .nickname{background:#38bdf822;border-color:#38bdf877;color:#bae6fd}.member-card.theme-forest .nickname{background:#4ade8022;border-color:#4ade8077;color:#bbf7d0}.member-card.theme-rose .nickname{background:#f472b622;border-color:#f472b677;color:#fbcfe8}.member-card.theme-gold .nickname{background:#facc1522;border-color:#facc1577;color:#fef08a}
+#detailView.theme-fire .panel{background:linear-gradient(145deg,#57251f,#24121b 78%);border-color:#fb923c99}#detailView.theme-ocean .panel{background:linear-gradient(145deg,#123d58,#0b1a2d 78%);border-color:#38bdf899}#detailView.theme-forest .panel{background:linear-gradient(145deg,#174333,#10251f 78%);border-color:#4ade8099}#detailView.theme-rose .panel{background:linear-gradient(145deg,#542342,#241329 78%);border-color:#f472b699}#detailView.theme-gold .panel{background:linear-gradient(145deg,#51401d,#211b12 78%);border-color:#facc1599}
+.photo-strip{height:132px;background:linear-gradient(135deg,#26395f,#49345f);display:flex;align-items:center;justify-content:center;overflow:hidden;color:#e0e7ff;font-size:38px;position:relative}.photo-strip:empty:after{content:"✦  BWABWA  ✦";font-size:11px;letter-spacing:3px;color:#dbeafe99}
+.photo-strip img{width:100%;height:100%;object-fit:cover;display:block}
+.card-body{padding:17px}
+.card-body h2{font-size:20px;margin:0 0 5px;overflow-wrap:anywhere}.nickname{display:inline-block;margin:0 0 11px;padding:4px 9px;border-radius:999px;background:#a78bfa20;border:1px solid #a78bfa55;color:#e9d5ff;font-size:12px;font-weight:650;overflow-wrap:anywhere}.detail-nickname{display:inline-block;color:#f9a8d4;background:#f472b61a;border:1px solid #f472b655;padding:5px 11px;border-radius:999px;font-size:13px;margin:4px 0 0}
+.card-body p{color:var(--muted);font-size:14px;line-height:1.5;margin:0 0 15px;min-height:21px}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.small-btn{background:transparent;border:1px solid #41577f;color:#dce5ff;border-radius:9px;padding:9px 12px;cursor:pointer;min-height:42px}
+.empty{border:1px dashed #405276;border-radius:18px;padding:35px 18px;text-align:center;color:var(--muted);grid-column:1/-1;line-height:1.6}
+.note{font-size:12px;color:#8fa0c2;line-height:1.5;margin-top:18px}
+footer{text-align:center;padding:0 16px 26px;color:#7181a1;font-size:12px}
+.view{display:none}
+.view.active{display:block}
+.detail-top{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.detail-title{margin:0;font-size:clamp(26px,5vw,36px);overflow-wrap:anywhere}
+.detail-sub{color:var(--muted);margin:5px 0 0}
+.panel{background:linear-gradient(145deg,#202d4b,#111a2f 78%);border:1px solid #6476a344;border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 12px 30px #0002}.panel h2:before{content:"✦ ";color:var(--pink)}
+.panel h2{font-size:18px;margin:0 0 14px}
+.profile-photo{width:100%;max-height:260px;object-fit:cover;border-radius:12px;display:none;margin-bottom:14px}
+.description-text{white-space:pre-wrap;line-height:1.7;color:#d8e2fb;overflow-wrap:anywhere}
+label{display:block;color:#bdc9e4;font-size:13px;margin:13px 0 6px}
+input,textarea{width:100%;border:1px solid #34466e;border-radius:10px;padding:12px;background:#0b1325;color:var(--text);font:inherit;font-size:16px}
+textarea{min-height:110px;resize:vertical}
+.form-actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;margin-top:15px}
+dialog{width:min(500px,calc(100% - 28px));border:1px solid #405276;border-radius:18px;background:#121b30;color:var(--text);padding:22px}
+dialog::backdrop{background:#020611bb}
+dialog h2{margin-top:0}
+.file-note{font-size:12px;color:#8fa0c2;line-height:1.5}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.photo-strip{height:125px}.toolbar .btn{width:100%}}
+
+/* Tema profil mengubah seluruh suasana halaman dan menambahkan motif khas */
+body.theme-neon{background:radial-gradient(ellipse at 10% 10%,#39306f 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#5a286b66 0,transparent 32%),linear-gradient(160deg,#11152d,#080c18 75%)}
+body.theme-fire{background:radial-gradient(ellipse at 12% 8%,#8a321e 0,transparent 38%),radial-gradient(ellipse at 92% 28%,#7c2d1266 0,transparent 34%),linear-gradient(160deg,#281018,#100911 75%)}
+body.theme-ocean{background:radial-gradient(ellipse at 12% 8%,#155e75 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#164e6380 0,transparent 34%),linear-gradient(160deg,#071b2b,#06101d 75%)}
+body.theme-forest{background:radial-gradient(ellipse at 12% 8%,#166534 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#14532d80 0,transparent 34%),linear-gradient(160deg,#09251d,#07120f 75%)}
+body.theme-rose{background:radial-gradient(ellipse at 12% 8%,#831843 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#9d174d66 0,transparent 34%),linear-gradient(160deg,#281022,#100912 75%)}
+body.theme-gold{background:radial-gradient(ellipse at 12% 8%,#854d0e 0,transparent 38%),radial-gradient(ellipse at 90% 25%,#a1620766 0,transparent 34%),linear-gradient(160deg,#261d0b,#100e08 75%)}
+body.theme-neon:before{content:"✦ · ✧ · ✦ · ✧";color:#c4b5fd44}
+body.theme-fire:before{content:"🔥  ✹  🔥  ✹";color:#fb923c55;transform:rotate(-12deg)}
+body.theme-ocean:before{content:"〰  ≋  🌊  ≋";color:#67e8f955;transform:rotate(8deg)}
+body.theme-forest:before{content:"❧  ✿  ❧  ✿";color:#86efac55;transform:rotate(-8deg)}
+body.theme-rose:before{content:"❀  ✿  ❀  ✿";color:#f9a8d455;transform:rotate(12deg)}
+body.theme-gold:before{content:"♛  ✧  ♛  ✧";color:#fde04755;transform:rotate(-8deg)}
+#detailView{position:relative}#detailView:before{display:block;text-align:center;font-size:22px;letter-spacing:12px;margin:0 0 12px;opacity:.8;content:"✦  ✧  ✦";color:#c4b5fd}
+#detailView.theme-fire:before{content:"🔥  ✹  🔥";color:#fdba74}#detailView.theme-ocean:before{content:"〰  🌊  〰";color:#7dd3fc}#detailView.theme-forest:before{content:"❧  🌿  ❧";color:#86efac}#detailView.theme-rose:before{content:"❀  🌸  ❀";color:#f9a8d4}#detailView.theme-gold:before{content:"♛  ✨  ♛";color:#fde047}
+#detailView.theme-neon .panel{background:linear-gradient(145deg,#29204cdd,#11172ddd);border-color:#c4b5fd99}
+#detailView.theme-neon .detail-nickname{color:#ddd6fe;background:#a78bfa22;border-color:#c4b5fd77}
+#detailView.theme-fire .detail-nickname{color:#fed7aa;background:#fb923c22;border-color:#fb923c77}
+#detailView.theme-ocean .detail-nickname{color:#bae6fd;background:#38bdf822;border-color:#38bdf877}
+#detailView.theme-forest .detail-nickname{color:#bbf7d0;background:#4ade8022;border-color:#4ade8077}
+#detailView.theme-rose .detail-nickname{color:#fbcfe8;background:#f472b622;border-color:#f472b677}
+#detailView.theme-gold .detail-nickname{color:#fef08a;background:#facc1522;border-color:#facc1577}
+.member-card.theme-neon:after{content:"✧ ✦";color:#c4b5fd99}.member-card.theme-fire:after{content:"🔥 ✹";color:#fdba7499}.member-card.theme-ocean:after{content:"〰 ≋";color:#7dd3fc99}.member-card.theme-forest:after{content:"❧ ❀";color:#86efac99}.member-card.theme-rose:after{content:"❀ ✿";color:#f9a8d499}.member-card.theme-gold:after{content:"♛ ✧";color:#fde04799}
+
+.auth-panel{margin-bottom:14px}.auth-panel h2,.panel h2{margin-top:0}.auth-panel [hidden],#appearancePanel[hidden]{display:none!important}button:disabled{opacity:.55;cursor:wait}body{background-repeat:no-repeat;background-size:cover;background-position:center} 
+
+/* Tema tambahan dan transisi tema halaman */
+body.theme-midnight{background:radial-gradient(ellipse at 15% 10%,#334155,transparent 40%),linear-gradient(160deg,#080d19,#02040a 80%)}
+body.theme-ice{background:radial-gradient(ellipse at 12% 8%,#0e7490,transparent 40%),linear-gradient(160deg,#082f49,#06121c 80%)}
+body.theme-lavender{background:radial-gradient(ellipse at 12% 8%,#7e22ce,transparent 40%),linear-gradient(160deg,#25103d,#0c0816 80%)}
+body.theme-cherry{background:radial-gradient(ellipse at 12% 8%,#be123c,transparent 40%),linear-gradient(160deg,#3f0b1d,#10070d 80%)}
+body.theme-sunset{background:radial-gradient(ellipse at 12% 8%,#c2410c,transparent 40%),linear-gradient(160deg,#431407,#120908 80%)}
+body.theme-emerald{background:radial-gradient(ellipse at 12% 8%,#047857,transparent 40%),linear-gradient(160deg,#022c22,#06110e 80%)}
+.member-card.theme-midnight,#detailView.theme-midnight .panel{background:linear-gradient(145deg,#334155,#111827);border-color:#94a3b899}
+.member-card.theme-ice,#detailView.theme-ice .panel{background:linear-gradient(145deg,#155e75,#082f49);border-color:#67e8f999}
+.member-card.theme-lavender,#detailView.theme-lavender .panel{background:linear-gradient(145deg,#6b21a8,#2e1065);border-color:#d8b4fe99}
+.member-card.theme-cherry,#detailView.theme-cherry .panel{background:linear-gradient(145deg,#9f1239,#4c0519);border-color:#fda4af99}
+.member-card.theme-sunset,#detailView.theme-sunset .panel{background:linear-gradient(145deg,#9a3412,#431407);border-color:#fdba7499}
+.member-card.theme-emerald,#detailView.theme-emerald .panel{background:linear-gradient(145deg,#065f46,#022c22);border-color:#6ee7b799}
+#memoryView{--book:#6f4329}
+/* Sampul buku tertutup: kulit cokelat, jahitan, ornamen, dan punggung buku */
+#memoryView .book-cover{position:relative;isolation:isolate;overflow:hidden;width:100%;min-height:clamp(390px,76vh,760px);border:8px solid #4a2a18;border-radius:5px 28px 28px 5px;padding:32px 24px 32px 52px;text-align:center;background:radial-gradient(ellipse at 68% 20%,#ffffff20,transparent 30%),radial-gradient(ellipse at 25% 90%,#4a261a44,transparent 45%),linear-gradient(110deg,#5d351f 0 5%,#9b6036 5.5%,var(--book) 13%,#b77a47 45%,#7a482a 100%);box-shadow:inset 0 0 0 3px #e7bb7c77,inset 12px 0 18px #2d160d88,7px 12px 0 #24140e,0 24px 42px #0007;color:#ffe7bd;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;transition:transform .6s,filter .4s}
+#memoryView .book-cover:before{content:"";position:absolute;z-index:-1;left:4px;top:0;bottom:0;width:25px;background:repeating-linear-gradient(to bottom,transparent 0 17px,#2d1a11 18px 22px,transparent 23px 37px);border-right:2px solid #d7a56d88;box-shadow:inset -5px 0 6px #321a1099}
+#memoryView .book-cover:after{content:"❦  ✦  ❧  ✦  ❦";position:absolute;inset:18px 18px 18px 38px;border:2px solid #f3d2a155;outline:1px solid #f3d2a133;display:flex;align-items:flex-start;justify-content:center;padding-top:24px;color:#f7d7a2;font-size:clamp(18px,4vw,28px);letter-spacing:4px;pointer-events:none}
+#memoryView .book-cover:active{transform:perspective(1000px) rotateY(-5deg) scale(.985);filter:brightness(1.08)}
+.memory-open-anim{animation:memoryOpen .8s cubic-bezier(.2,.75,.25,1) both}@keyframes memoryOpen{0%{opacity:0;transform:perspective(1100px) rotateY(-35deg) scale(.9);transform-origin:left center}65%{opacity:1;transform:perspective(1100px) rotateY(5deg) scale(1.01)}100%{opacity:1;transform:perspective(1100px) rotateY(0) scale(1)}}
+.book-cover strong{font-family:Georgia,serif;font-size:clamp(28px,7vw,46px);letter-spacing:3px;text-shadow:0 3px 0 #4b2a1a,0 0 22px #ffe2b355;z-index:1}.book-cover span{font-size:clamp(28px,7vw,42px);z-index:1}.book-cover small{z-index:1;font-family:Georgia,serif;font-size:15px;letter-spacing:1px;background:#3e241d77;border:1px solid #f0cc8a88;border-radius:30px;padding:10px 16px}
+.memory-spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;padding:clamp(7px,2vw,18px);background:linear-gradient(90deg,#9b7046,#e8d1a5 3%,#f4e5c4 48%,#b28a5c 49.3%,#7d512f 50%,#f5e7c8 51%,#e6cca0 97%,#85542f);border:clamp(5px,1.4vw,12px) solid #694025;border-radius:7px 18px 18px 7px;box-shadow:inset 0 0 0 3px #f6d9a977,0 18px 36px #0006;position:relative;width:100%;max-width:100%;height:clamp(620px,88vh,900px);min-height:620px;box-sizing:border-box}
+.memory-spread:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:clamp(8px,1.4vw,15px);transform:translateX(-50%);background:linear-gradient(90deg,#61391f,#bd9060 30%,#4e2d1b 55%,#dfbd8a);box-shadow:2px 0 9px #3b211c66;z-index:2}
+.memory-side{display:grid;grid-template-rows:1fr 1fr;gap:clamp(14px,2.4vw,24px);padding:clamp(8px,2vw,18px);min-width:0;min-height:0}
+.memory-slot{min-width:0;min-height:0;background:linear-gradient(145deg,#fff7e7,#e8d2ac);border:clamp(4px,1vw,8px) solid #fff4df;padding:clamp(5px,1.3vw,12px);box-shadow:0 4px 12px #58351c44,0 0 0 1px #c5a174;position:relative;display:flex;flex-direction:column;transform:rotate(-.35deg)}.memory-slot:nth-child(even){transform:rotate(.35deg)}
+.memory-media{width:100%;flex:1;min-height:0;height:100%;max-height:none;aspect-ratio:4/3;object-fit:cover;display:block;background:#8a6547;cursor:pointer}.memory-video{position:relative;cursor:pointer;display:flex;flex:1;min-height:0}.memory-video .memory-empty{width:100%;min-height:0}.memory-video:after{content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#21160ddd;color:white;border:2px solid #f6e2bd;border-radius:50%;width:58px;height:58px;display:grid;place-items:center;font-size:25px;padding-left:4px;box-shadow:0 3px 12px #0006}.memory-caption{font-family:Georgia,serif;color:#53341f;text-align:center;padding:10px 3px;overflow-wrap:anywhere;font-size:clamp(12px,2vw,17px)}.memory-empty{aspect-ratio:4/3;min-height:0;flex:1;display:grid;place-items:center;text-align:center;color:#76533a;font-family:Georgia,serif;background:repeating-linear-gradient(45deg,#ead4b3,#ead4b3 12px,#f4e4ca 12px,#f4e4ca 24px);padding:8px;box-sizing:border-box}.memory-hidden{display:none!important}.memory-fullscreen{position:fixed;inset:0;z-index:9999;background:#050505f5;display:flex;align-items:center;justify-content:center;padding:12px}.memory-fullscreen img,.memory-fullscreen video{max-width:100%;max-height:92%;object-fit:contain}.memory-fullscreen button{position:absolute;top:15px;right:15px;background:#fff;color:#111;border:0;border-radius:50%;width:44px;height:44px;font-size:24px}.memory-controls{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0}.memory-admin{margin-top:14px}.memory-edit-item{border:1px solid #34466e;border-radius:12px;padding:12px;margin:12px 0}.memory-edit-item h3{font-size:15px;margin:0;color:#f5d9ad}.memory-side .memory-slot:after{content:"✦";position:absolute;top:3px;right:6px;color:#a67b4e;font-size:15px;pointer-events:none}
+@media(max-width:560px){#memoryView .book-cover{min-height:65vh;padding-left:42px}.memory-spread{padding:4px;border-width:5px;height:clamp(590px,82vh,760px);min-height:590px}.memory-side{padding:4px;gap:10px}.memory-slot{padding:4px;border-width:3px;overflow:hidden}.memory-caption{font-size:12px;padding:6px 1px;min-height:30px}.memory-media,.memory-empty,.memory-video,.memory-video .memory-empty{min-height:0}.memory-video:after{width:42px;height:42px;font-size:19px}}
+@media(prefers-reduced-motion:reduce){.memory-open-anim{animation:none!important;transition:none!important}}
+
+
+/* Layout revised to match the reference: a wide open book with four landscape photo/video frames. */
+#memoryView .memory-spread{width:100%;height:auto;min-height:0;aspect-ratio:1.62/1;max-height:none;}
+#memoryView .memory-side{grid-template-rows:repeat(2,minmax(0,1fr));min-height:0;}
+#memoryView .memory-slot{min-height:0;overflow:hidden;}
+#memoryView .memory-media,#memoryView .memory-empty{flex:0 0 auto;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;}
+#memoryView .memory-video{flex:0 0 auto;width:100%;aspect-ratio:4/3;min-height:0;}
+#memoryView .memory-video .memory-empty{height:100%;aspect-ratio:auto;}
+#memoryView .memory-caption{min-height:34px;display:flex;align-items:center;justify-content:center;}
+@media(max-width:560px){
+ #memoryView .memory-spread{width:100%;height:auto;min-height:0;aspect-ratio:1.22/1;padding:4px;border-width:5px;}
+ #memoryView .memory-side{padding:5px;gap:10px;}
+ #memoryView .memory-slot{padding:4px;border-width:3px;}
+ #memoryView .memory-media,#memoryView .memory-empty,#memoryView .memory-video{aspect-ratio:1/1;}
+ #memoryView .memory-video .memory-empty{aspect-ratio:auto;}
+ #memoryView .memory-caption{font-size:12px;padding:5px 1px;min-height:28px;}
+}
+
+/* Dekorasi tambahan untuk 12 tema: tiap tema punya motif, bukan cuma warna */
+body.theme-neon:after,body.theme-fire:after,body.theme-ocean:after,body.theme-forest:after,body.theme-rose:after,body.theme-gold:after,body.theme-midnight:after,body.theme-ice:after,body.theme-lavender:after,body.theme-cherry:after,body.theme-sunset:after,body.theme-emerald:after{position:absolute;z-index:0;pointer-events:none;right:12px;top:270px;font-size:clamp(24px,5vw,44px);letter-spacing:10px;opacity:.24;filter:drop-shadow(0 0 9px currentColor)}
+body.theme-neon:after{content:"✦ ✧ 🪐";color:#c4b5fd}body.theme-fire:after{content:"🔥 ✹ ☄️";color:#fb923c}body.theme-ocean:after{content:"🌊 🐚 ✧";color:#67e8f9}body.theme-forest:after{content:"🌿 🍃 🌱";color:#86efac}body.theme-rose:after{content:"🌸 ❀ 🌷";color:#f9a8d4}body.theme-gold:after{content:"👑 ✨ ♛";color:#fde047}body.theme-midnight:after{content:"🌙 ✦ ☾";color:#cbd5e1}body.theme-ice:after{content:"❄️ 💎 ❄️";color:#a5f3fc}body.theme-lavender:after{content:"🪻 ✧ 💜";color:#d8b4fe}body.theme-cherry:after{content:"🍒 🌺 ♥";color:#fda4af}body.theme-sunset:after{content:"🌅 ☀️ ✦";color:#fdba74}body.theme-emerald:after{content:"💎 🍀 ✧";color:#6ee7b7}
+.member-card:before{content:"";position:absolute;inset:7px;border:1px solid #ffffff13;border-radius:14px;pointer-events:none;z-index:0}.member-card .card-body,.member-card .photo-strip{position:relative;z-index:1}.member-card:after{z-index:2}
+
+</style>
+</head>
+<body>
+<header>
+  <span class="badge">RUANG CIRCLE</span>
+  <h1>Team Bwabwa</h1>
+  <p>Profil anggota circle dan halaman deskripsi masing-masing.</p>
+</header>
+<main>
+  <section id="authPanel" class="panel auth-panel">
+    <h2>Akun anggota</h2>
+    <p id="authStatus" class="description-text">Semua orang bisa melihat profil anggota. Login diperlukan untuk menyimpan tema dan wallpaper pribadi.</p>
+    <div id="authFormWrap">
+      <label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="email" placeholder="Email" required>
+      <label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Minimal 6 karakter" required>
+      <div class="form-actions"><button class="btn" id="loginBtn" type="button">Login</button><button class="btn secondary" id="registerBtn" type="button">Buat akun</button></div>
+    </div>
+    <button class="btn secondary" id="logoutBtn" type="button" hidden>Logout</button>
+  </section>
+  <section id="appearancePanel" class="panel" hidden>
+    <h2>Tampilan pribadiku</h2>
+    <label for="personalTheme">Tema website</label>
+    <select id="personalTheme" style="width:100%;border:1px solid #34466e;border-radius:10px;padding:12px;background:#0b1325;color:var(--text);font:inherit;font-size:16px">
+      <option value="neon">💜 Neon Galaxy</option><option value="fire">🔥 Fire</option><option value="ocean">🌊 Ocean</option><option value="forest">🌿 Forest</option><option value="rose">🌸 Rose</option><option value="gold">👑 Gold</option><option value="midnight">🌙 Midnight</option><option value="ice">🧊 Ice Crystal</option><option value="lavender">🪻 Lavender</option><option value="cherry">🍒 Cherry</option><option value="sunset">🌅 Sunset</option><option value="emerald">💎 Emerald</option>
+    </select>
+    <label for="wallpaperUrl">Wallpaper pribadi (URL gambar, opsional)</label>
+    <input id="wallpaperUrl" type="url" placeholder="https://contoh.com/wallpaper.jpg">
+    <div class="form-actions"><button class="btn" id="saveAppearanceBtn" type="button">Simpan tampilan</button><button class="btn secondary" id="clearWallpaperBtn" type="button">Hapus wallpaper</button></div>
+    <p class="file-note">Tampilan ini hanya berlaku untuk akunmu, tidak mengubah tampilan anggota lain.</p>
+  </section>
+  <section id="homeView" class="view active">
+    <div class="toolbar">
+      <input class="search" id="search" type="search" placeholder="Cari anggota..." aria-label="Cari anggota">
+      <button class="btn" id="openMemoryFromHome" type="button">📖 Memory Book</button><button class="btn" id="addBtn" type="button">＋ Tambah anggota</button>
+    </div>
+    <div class="grid" id="members"></div>
+    <p class="note">Semua orang bisa melihat profil dan deskripsi anggota. Hanya admin yang bisa mengelola anggota; login diperlukan untuk menyimpan tema dan wallpaper pribadi.</p>
+  </section>
+
+  <section id="memoryView" class="view">
+    <div class="detail-top"><button class="btn secondary" id="memoryBackBtn" type="button">← Kembali</button><div><h1 class="detail-title">📖 Memory Book</h1><p class="detail-sub">Kenangan Team Bwabwa</p></div></div>
+    <div id="memoryCoverPanel" class="panel"><button class="book-cover" id="openMemoryBook" type="button"><span>❦ ✦ ❦</span><strong>MEMORY BOOK</strong><span>✧ ♡ ✧</span><small>Tekan sampul untuk membuka kenangan</small></button></div>
+    <div id="memoryPagesPanel" class="panel memory-hidden"><h2>📜 Memory Book</h2><div class="memory-spread" id="memorySpread"></div><div class="memory-controls"><button class="btn secondary" id="prevMemoryPage" type="button">← Sebelumnya</button><span id="memoryPageLabel">Halaman 1</span><button class="btn secondary" id="nextMemoryPage" type="button">Berikutnya →</button></div><div id="memoryAdminControls" class="memory-admin" hidden><label for="bookTheme">Warna buku (publik)</label><select id="bookTheme" style="width:100%;padding:12px;border-radius:10px;background:#0b1325;color:var(--text)"><option value="#6f4329">🤎 Cokelat klasik</option><option value="#4b2e83">💜 Ungu</option><option value="#174c3c">🌿 Hijau hutan</option><option value="#173f66">🌊 Biru laut</option><option value="#762c42">🌹 Merah mawar</option><option value="#8a641b">👑 Emas</option></select><div class="form-actions"><button class="btn secondary" id="saveBookTheme" type="button">Simpan warna buku</button><button class="btn" id="editMemoryPage" type="button">Edit 4 media halaman ini</button><button class="btn" id="addMemoryPage" type="button">＋ Tambah halaman</button></div><p class="file-note">Admin bisa memilih foto atau video langsung dari galeri/perangkat. Media diunggah ke Firebase Storage; pastikan Storage sudah diaktifkan dan Rules-nya dipasang.</p></div></div>
+  </section>
+  <div id="memoryFullscreen" class="memory-fullscreen memory-hidden"><button id="closeMemoryFullscreen" type="button" aria-label="Tutup">×</button><div id="memoryFullscreenContent"></div></div>
+  <section id="detailView" class="view">
+    <div class="detail-top">
+      <button class="btn secondary" id="backBtn" type="button">← Kembali</button>
+      <div><h1 class="detail-title" id="detailName">Deskripsi anggota</h1><div class="detail-nickname" id="detailNickname" hidden></div><p class="detail-sub">Halaman khusus anggota ini ✦</p></div>
+    </div>
+    <div class="panel">
+      <h2>Deskripsi</h2>
+      <img id="detailPhoto" class="profile-photo" alt="Foto anggota">
+      <div id="descriptionText" class="description-text">Belum ada deskripsi. Tekan Edit deskripsi untuk mengisi.</div>
+      <div class="form-actions"><button class="btn secondary" id="deleteDetailBtn" type="button">🗑️ Hapus anggota</button><button class="btn" id="editDescriptionBtn" type="button">✏️ Edit deskripsi</button></div>
+    </div>
+  </section>
+</main>
+<footer>Team Bwabwa · Ruang kecil untuk kelompok kalian</footer>
+
+<dialog id="memberDialog">
+<form id="memberForm">
+  <h2 id="memberDialogTitle">Tambah anggota</h2>
+  <label for="memberName">Nama anggota</label>
+  <input id="memberName" maxlength="60" placeholder="Masukkan nama anggota" required>
+  <label for="memberNickname">Title / julukan (opsional)</label>
+  <input id="memberNickname" maxlength="60" placeholder="Contoh: Ketua, Si Paling Sigma, MVP">
+  <label for="memberTheme">Tema profil</label>
+  <select id="memberTheme" style="width:100%;border:1px solid #34466e;border-radius:10px;padding:12px;background:#0b1325;color:var(--text);font:inherit;font-size:16px">
+    <option value="neon">💜 Neon Galaxy</option><option value="fire">🔥 Fire</option><option value="ocean">🌊 Ocean</option><option value="forest">🌿 Forest</option><option value="rose">🌸 Rose</option><option value="gold">👑 Gold</option><option value="midnight">🌙 Midnight</option><option value="ice">🧊 Ice Crystal</option><option value="lavender">🪻 Lavender</option><option value="cherry">🍒 Cherry</option><option value="sunset">🌅 Sunset</option><option value="emerald">💎 Emerald</option>
+  </select>
+  <label for="memberPhoto">Foto anggota (opsional)</label>
+  <input id="memberPhoto" type="file" accept="image/*">
+  <p class="file-note">Foto akan tampil hanya di bagian atas kotak anggota dan di halaman deskripsi.</p>
+  <div class="form-actions"><button class="btn secondary" type="button" id="cancelMember">Batal</button><button class="btn" type="submit">Simpan</button></div>
+</form>
+</dialog>
+
+<dialog id="deleteConfirmDialog">
+  <form id="deleteConfirmForm">
+    <h2>Hapus anggota?</h2>
+    <p id="deleteConfirmText" class="description-text">Profil ini akan dihapus dari daftar Team Bwabwa.</p>
+    <p id="deleteStatus" class="file-note" role="status" aria-live="polite"></p>
+    <div class="form-actions"><button class="btn secondary" id="cancelDelete" type="button">Batal</button><button class="btn" id="confirmDelete" type="submit">Ya, hapus</button></div>
+  </form>
+</dialog>
+
+<dialog id="contentDialog">
+<form id="contentForm">
+  <h2 id="contentTitle">Edit deskripsi</h2>
+  <label for="contentInput" id="contentLabel">Deskripsi</label>
+  <textarea id="contentInput" maxlength="10000" placeholder="Tulis di sini..."></textarea>
+  <div class="form-actions"><button class="btn secondary" type="button" id="cancelContent">Batal</button><button class="btn" type="submit">Simpan</button></div>
+</form>
+</dialog>
+
+<dialog id="memoryEditDialog"><form id="memoryEditForm"><h2 id="memoryEditTitle">Edit halaman Memory Book</h2><p class="file-note">Pilih foto/video langsung dari galeri/perangkat. Setiap tampilan buku berisi 4 kenangan: 2 di halaman kiri dan 2 di halaman kanan. Media lama tetap dipakai jika tidak memilih file baru.</p><section class="memory-edit-item"><h3>Media 1 · halaman kiri, slot 1</h3><label for="memoryType1">Jenis media</label><select id="memoryType1" style="width:100%;padding:12px;background:#0b1325;color:var(--text)"><option value="image">Foto</option><option value="video">Video</option></select><label for="memoryFile1">Pilih foto/video dari galeri</label><input id="memoryFile1" type="file" accept="image/*" style="width:100%;padding:12px"/><p id="memoryCurrent1" class="file-note">Belum ada media</p><label for="memoryCaption1">Keterangan</label><input id="memoryCaption1" maxlength="120" placeholder="Kenangan 1"/></section><section class="memory-edit-item"><h3>Media 2 · halaman kiri, slot 2</h3><label for="memoryType2">Jenis media</label><select id="memoryType2" style="width:100%;padding:12px;background:#0b1325;color:var(--text)"><option value="image">Foto</option><option value="video">Video</option></select><label for="memoryFile2">Pilih foto/video dari galeri</label><input id="memoryFile2" type="file" accept="image/*" style="width:100%;padding:12px"/><p id="memoryCurrent2" class="file-note">Belum ada media</p><label for="memoryCaption2">Keterangan</label><input id="memoryCaption2" maxlength="120" placeholder="Kenangan 2"/></section><section class="memory-edit-item"><h3>Media 3 · halaman kanan, slot 1</h3><label for="memoryType3">Jenis media</label><select id="memoryType3" style="width:100%;padding:12px;background:#0b1325;color:var(--text)"><option value="image">Foto</option><option value="video">Video</option></select><label for="memoryFile3">Pilih foto/video dari galeri</label><input id="memoryFile3" type="file" accept="image/*" style="width:100%;padding:12px"/><p id="memoryCurrent3" class="file-note">Belum ada media</p><label for="memoryCaption3">Keterangan</label><input id="memoryCaption3" maxlength="120" placeholder="Kenangan 3"/></section><section class="memory-edit-item"><h3>Media 4 · halaman kanan, slot 2</h3><label for="memoryType4">Jenis media</label><select id="memoryType4" style="width:100%;padding:12px;background:#0b1325;color:var(--text)"><option value="image">Foto</option><option value="video">Video</option></select><label for="memoryFile4">Pilih foto/video dari galeri</label><input id="memoryFile4" type="file" accept="image/*" style="width:100%;padding:12px"/><p id="memoryCurrent4" class="file-note">Belum ada media</p><label for="memoryCaption4">Keterangan</label><input id="memoryCaption4" maxlength="120" placeholder="Kenangan 4"/></section><div class="form-actions"><button class="btn secondary" id="cancelMemoryEdit" type="button">Batal</button><button class="btn" id="saveMemoryPageBtn" type="submit">Unggah & simpan halaman</button></div></form></dialog>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script>
+(function(){
+const firebaseConfig = {
+  apiKey: "AIzaSyDnuB3qhPQR0N_1WfNU1tXGdphUu25Ut6c",
+  authDomain: "team-bwabwa2.firebaseapp.com",
+  projectId: "team-bwabwa2",
+  storageBucket: "team-bwabwa2.firebasestorage.app",
+  messagingSenderId: "905403141068",
+  appId: "1:905403141068:web:2c9fe1b8b4e4037f6d2b69",
+  measurementId: "G-VETFQ7KKBK"
+};
+const ADMIN_UID = "gHCYGYbrDeSV4F9Vo1aXwYS8VU92";
+const LEGACY_KEY="circle-kita-members-v2";
+const $=id=>document.getElementById(id);
+const app=firebase.apps.length?firebase.app():firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
+const db=firebase.firestore();
+const storage=firebase.storage();
+let members=[],activeId=null,contentMode="description",pendingPhoto="",activeEditId=null,photoReadPending=false,currentUser=null,unsubMembers=null,unsubPrefs=null;
+let personalPrefs={theme:"neon",wallpaperUrl:""};
+function isAdmin(){return !!currentUser&&currentUser.uid===ADMIN_UID}
+function setStatus(msg){$("authStatus").textContent=msg}
+function setBusy(b){["loginBtn","registerBtn"].forEach(id=>$(id).disabled=b)}
+function applyAppearance(){
+ document.body.className="theme-"+(personalPrefs.theme||"neon");
+ document.body.style.backgroundImage=personalPrefs.wallpaperUrl?`linear-gradient(#080c18aa,#080c18aa),url("${personalPrefs.wallpaperUrl.replace(/"/g,'%22')}")`:"";
+ document.body.style.backgroundSize=personalPrefs.wallpaperUrl?"cover":"";
+ document.body.style.backgroundPosition=personalPrefs.wallpaperUrl?"center":"";
+ document.body.style.backgroundAttachment=personalPrefs.wallpaperUrl?"fixed":"";
+ $("personalTheme").value=personalPrefs.theme||"neon";
+ $("wallpaperUrl").value=personalPrefs.wallpaperUrl||"";
+}
+function initials(name){return (String(name||"").trim()[0]||"👤").toUpperCase()}
+function setControls(){
+ const logged=!!currentUser;
+ $("authFormWrap").hidden=logged;$("logoutBtn").hidden=!logged;$("appearancePanel").hidden=!logged;
+ $("addBtn").hidden=!isAdmin();$("deleteDetailBtn").hidden=!isAdmin();$("editDescriptionBtn").hidden=!isAdmin();
+ if(logged){setStatus((isAdmin()?"Login sebagai admin: ":"Login sebagai anggota: ")+currentUser.email);}
+ else setStatus("Semua orang bisa melihat profil anggota. Login diperlukan untuk menyimpan tema dan wallpaper pribadi.");
+}
+async function loadPrefs(uid){
+ if(unsubPrefs)unsubPrefs();
+ unsubPrefs=db.collection("userPreferences").doc(uid).onSnapshot(doc=>{
+  const data=doc.exists?doc.data():{};
+  personalPrefs={theme:data.theme||"neon",wallpaperUrl:data.wallpaperUrl||""};applyAppearance();
+ },err=>{console.error(err);setStatus("Gagal memuat tampilan pribadi. Periksa Firestore Rules.")});
+}
+function startMembersListener(){
+ if(unsubMembers)unsubMembers();
+ unsubMembers=db.collection("members").onSnapshot(async snap=>{
+  members=snap.docs.map(d=>({id:d.id,...d.data()}));
+  if(isAdmin()&&snap.empty){
+   // Import legacy browser-only members once, when the shared collection is empty.
+   let old=[];try{old=JSON.parse(localStorage.getItem(LEGACY_KEY)||"[]")}catch(e){}
+   if(old.length){
+    try{const batch=db.batch();old.forEach(m=>{const id=String(m.id||Date.now()+Math.random().toString(16).slice(2));const ref=db.collection("members").doc(id);batch.set(ref,{name:m.name||"Anggota",nickname:m.nickname||"",theme:m.theme||"neon",photo:m.photo||"",description:m.description||"",createdAt:firebase.firestore.FieldValue.serverTimestamp()})});await batch.commit();setStatus("Data anggota lama berhasil dipindahkan ke database online.");return}catch(e){console.error(e);alert("Impor data lama gagal. Periksa Rules dan ukuran foto.")}
+   }
+  }
+  if(activeId&&!members.some(m=>m.id===activeId)){activeId=null;showHome()}
+  render();if(activeId)showDetail(activeId);
+ },err=>{console.error(err);alert("Tidak bisa membaca database. Periksa Firestore Rules.")});
+}
+async function saveMember(data,id){
+ if(!isAdmin())throw new Error("Hanya admin yang bisa mengelola anggota.");
+ if(data.photo&&data.photo.length>700000)throw new Error("Foto terlalu besar untuk database. Pilih foto yang lebih kecil.");
+ const payload={name:data.name,nickname:data.nickname||"",theme:data.theme||"neon",photo:data.photo||"",description:data.description||""};
+ if(id)await db.collection("members").doc(id).set(payload,{merge:true});else await db.collection("members").add({...payload,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+}
+async function saveMemberChanges(id,patch){if(!isAdmin())throw new Error("Hanya admin yang bisa mengelola anggota.");await db.collection("members").doc(id).set(patch,{merge:true})}
+function showHome(){$("detailView").classList.remove("active");$("memoryView").classList.remove("active");$("homeView").classList.add("active");activeId=null;applyAppearance();render();window.scrollTo(0,0)}
+function showDetail(id){const m=members.find(x=>x.id===id);if(!m)return;activeId=id;document.body.className="theme-"+(m.theme||"neon");document.body.style.backgroundImage="";document.body.style.backgroundSize="";document.body.style.backgroundPosition="";document.body.style.backgroundAttachment="";$("homeView").classList.remove("active");$("detailView").classList.add("active");$("detailView").className="view active theme-"+(m.theme||"neon");$("detailName").textContent=m.name||"Anggota";const nick=$("detailNickname");if(m.nickname&&m.nickname.trim()){nick.textContent="✦ "+m.nickname;nick.hidden=false}else{nick.textContent="";nick.hidden=true}$("descriptionText").textContent=m.description||"Belum ada deskripsi.";const img=$("detailPhoto");if(m.photo){img.src=m.photo;img.style.display="block"}else{img.removeAttribute("src");img.style.display="none"}$("deleteDetailBtn").hidden=!isAdmin();$("editDescriptionBtn").hidden=!isAdmin();window.scrollTo(0,0)}
+let pendingDeleteId=null;
+function deleteMember(id){
+ if(!isAdmin()){alert("Akun ini bukan admin. Login menggunakan akun admin untuk menghapus anggota.");return}
+ const m=members.find(x=>x.id===id);if(!m){alert("Profil tidak ditemukan. Muat ulang website lalu coba lagi.");return}
+ pendingDeleteId=id;
+ $("deleteConfirmText").textContent='Yakin ingin menghapus profil “'+(m.name||"Anggota")+'”? Tindakan ini tidak bisa dibatalkan.';
+ $("deleteStatus").textContent="";$("confirmDelete").disabled=false;$("confirmDelete").textContent="Ya, hapus";
+ $("deleteConfirmDialog").showModal();
+}
+$("cancelDelete").addEventListener("click",()=>{$("deleteConfirmDialog").close();pendingDeleteId=null});
+$("deleteConfirmForm").addEventListener("submit",async e=>{
+ e.preventDefault();const id=pendingDeleteId;if(!id)return;
+ if(!isAdmin()){$("deleteStatus").textContent="Gagal: akun ini bukan admin.";return}
+ const btn=$("confirmDelete");btn.disabled=true;btn.textContent="Menghapus...";$("deleteStatus").textContent="Sedang menghapus profil dari database...";
+ try{
+  await db.collection("members").doc(id).delete();
+  pendingDeleteId=null;$("deleteConfirmDialog").close();
+  if(activeId===id)showHome();
+ }catch(e){
+  console.error("Delete member error:",e);
+  const code=e&&e.code?e.code:"unknown";
+  $("deleteStatus").textContent="Gagal menghapus ("+code+"). Periksa login admin, Firestore Rules, dan koneksi internet.";
+  btn.disabled=false;btn.textContent="Coba lagi";
+ }
+});
+$("deleteDetailBtn").addEventListener("click",()=>{if(activeId)deleteMember(activeId);else alert("Pilih profil anggota terlebih dahulu.")});
+function render(){const grid=$("members");grid.innerHTML="";const q=$("search").value.trim().toLowerCase();const filtered=members.filter(m=>(m.name||"").toLowerCase().includes(q)||(m.nickname||"").toLowerCase().includes(q));if(!filtered.length){const e=document.createElement("div");e.className="empty";e.textContent=members.length?"Tidak ada anggota yang cocok.":(currentUser?"Belum ada anggota. Admin dapat menambahkan anggota.":"Belum ada anggota di database Team Bwabwa.");grid.appendChild(e);return}filtered.forEach(m=>{const card=document.createElement("article");card.className="member-card theme-"+(m.theme||"neon");const photo=document.createElement("div");photo.className="photo-strip";if(m.photo){const img=document.createElement("img");img.src=m.photo;img.alt="Foto "+m.name;photo.appendChild(img)}else photo.textContent=initials(m.name);const body=document.createElement("div");body.className="card-body";const title=document.createElement("h2");title.textContent=m.name||"Anggota";const nickname=document.createElement("div");nickname.className="nickname";nickname.textContent=m.nickname?"✦ "+m.nickname:"✧ Anggota Team Bwabwa";const preview=document.createElement("p");preview.textContent=m.description?(m.description.length>80?m.description.slice(0,80)+"…":m.description):"Belum ada deskripsi.";const actions=document.createElement("div");actions.className="card-actions";const open=document.createElement("button");open.type="button";open.className="small-btn";open.textContent="Buka deskripsi";open.addEventListener("click",()=>showDetail(m.id));actions.append(open);if(isAdmin()){const edit=document.createElement("button");edit.type="button";edit.className="small-btn";edit.textContent="Edit profil";edit.addEventListener("click",()=>openMemberDialog(m.id));const del=document.createElement("button");del.type="button";del.className="small-btn";del.textContent="🗑️ Hapus";del.addEventListener("click",()=>deleteMember(m.id));actions.append(edit,del)}body.append(title,nickname,preview,actions);card.append(photo,body);grid.appendChild(card)})}
+function openMemberDialog(id=null){if(!isAdmin())return alert("Hanya admin yang bisa mengelola anggota.");const m=members.find(x=>x.id===id);pendingPhoto=m?.photo||"";activeEditId=id;$("memberDialogTitle").textContent=m?"Edit profil anggota":"Tambah anggota";$("memberName").value=m?.name||"";$("memberNickname").value=m?.nickname||"";$("memberPhoto").value="";$("memberTheme").value=m?.theme||"neon";$("memberDialog").showModal()}
+$("backBtn").addEventListener("click",showHome);$("search").addEventListener("input",render);$("cancelMember").addEventListener("click",()=>$("memberDialog").close());
+$("memberPhoto").addEventListener("change",()=>{const file=$("memberPhoto").files[0];if(!file)return;if(!file.type.startsWith("image/")){alert("Pilih file gambar.");$("memberPhoto").value="";return}if(file.size>20*1024*1024){alert("Ukuran foto asli maksimal 20 MB.");$("memberPhoto").value="";return}photoReadPending=true;const reader=new FileReader();reader.onload=()=>{const img=new Image();img.onload=()=>{try{const maxSide=900,scale=Math.min(1,maxSide/Math.max(img.naturalWidth,img.naturalHeight));const canvas=document.createElement("canvas");canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));const ctx=canvas.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);pendingPhoto=canvas.toDataURL("image/jpeg",0.48);photoReadPending=false;if(pendingPhoto.length>700000)alert("Foto masih terlalu besar untuk database. Pilih foto yang lebih kecil.")}catch(e){photoReadPending=false;alert("Foto gagal diproses.")}};img.onerror=()=>{photoReadPending=false;alert("Foto gagal dibuka.")};img.src=reader.result};reader.onerror=()=>{photoReadPending=false;alert("Foto gagal dibaca.")};reader.readAsDataURL(file)});
+$("memberForm").addEventListener("submit",async e=>{e.preventDefault();if(!isAdmin())return alert("Hanya admin yang bisa mengelola anggota.");if(photoReadPending)return alert("Tunggu sampai foto selesai diproses.");const name=$("memberName").value.trim();if(!name)return;try{await saveMember({name,nickname:$("memberNickname").value.trim(),theme:$("memberTheme").value,photo:pendingPhoto,description:members.find(m=>m.id===activeEditId)?.description||""},activeEditId);$("memberDialog").close();}catch(err){console.error(err);alert(err.message||"Gagal menyimpan anggota. Periksa koneksi dan Rules Firebase.")}});
+$("cancelContent").addEventListener("click",()=>$("contentDialog").close());function openContent(){if(!isAdmin())return alert("Hanya admin yang bisa mengubah deskripsi.");const m=members.find(x=>x.id===activeId);if(!m)return;contentMode="description";$("contentTitle").textContent="Edit deskripsi";$("contentLabel").textContent="Deskripsi";$("contentInput").value=m.description||"";$("contentDialog").showModal()}$("editDescriptionBtn").addEventListener("click",openContent);$("contentForm").addEventListener("submit",async e=>{e.preventDefault();const m=members.find(x=>x.id===activeId);if(!m||!isAdmin())return;try{await saveMemberChanges(m.id,{description:$("contentInput").value.trim()});$("contentDialog").close()}catch(err){console.error(err);alert("Gagal menyimpan deskripsi. Periksa koneksi dan Rules Firebase.")}});
+$("loginBtn").addEventListener("click",async()=>{const email=$("authEmail").value.trim(),password=$("authPassword").value;if(!email||!password)return alert("Isi email dan password.");setBusy(true);try{await auth.signInWithEmailAndPassword(email,password)}catch(e){alert("Login gagal: "+(e.code||e.message))}finally{setBusy(false)}});
+$("registerBtn").addEventListener("click",async()=>{const email=$("authEmail").value.trim(),password=$("authPassword").value;if(!email||!password)return alert("Isi email dan password.");if(password.length<6)return alert("Password minimal 6 karakter.");setBusy(true);try{await auth.createUserWithEmailAndPassword(email,password);alert("Akun berhasil dibuat. Sekarang kamu bisa melihat data bersama.")}catch(e){alert("Pendaftaran gagal: "+(e.code||e.message))}finally{setBusy(false)}});
+$("logoutBtn").addEventListener("click",()=>auth.signOut());$("addBtn").addEventListener("click",()=>openMemberDialog());
+$("saveAppearanceBtn").addEventListener("click",async()=>{if(!currentUser)return;const theme=$("personalTheme").value,url=$("wallpaperUrl").value.trim();if(url&&!/^https:\/\//i.test(url)){alert("URL wallpaper harus dimulai dengan https://");return}try{await db.collection("userPreferences").doc(currentUser.uid).set({theme,wallpaperUrl:url},{merge:true});personalPrefs={theme,wallpaperUrl:url};applyAppearance();alert("Tampilan pribadi tersimpan.")}catch(e){console.error(e);alert("Gagal menyimpan tampilan. Pastikan Rules userPreferences sudah dipasang.")}});
+$("clearWallpaperBtn").addEventListener("click",async()=>{if(!currentUser)return;$("wallpaperUrl").value="";try{await db.collection("userPreferences").doc(currentUser.uid).set({theme:$("personalTheme").value,wallpaperUrl:""},{merge:true});personalPrefs={theme:$("personalTheme").value,wallpaperUrl:""};applyAppearance()}catch(e){alert("Gagal menghapus wallpaper. Periksa Rules Firebase.")}});
+
+// Memory Book bersama: data halaman dan warna buku disimpan di Firestore.
+let memoryData={pages:[{items:[{type:"image",url:"",caption:""},{type:"image",url:"",caption:""},{type:"image",url:"",caption:""},{type:"image",url:"",caption:""}]}],bookTheme:"#6f4329"},memoryPage=0,unsubMemory=null;
+function openMemory(){activeId=null;$ ("homeView").classList.remove("active");$("detailView").classList.remove("active");$("memoryView").classList.add("active");applyAppearance();$("memoryCoverPanel").classList.remove("memory-hidden");$("memoryPagesPanel").classList.add("memory-hidden");window.scrollTo(0,0)}
+function startMemoryListener(){if(unsubMemory)unsubMemory();unsubMemory=db.collection("memoryBook").doc("main").onSnapshot(doc=>{if(doc.exists){const d=doc.data()||{};memoryData={pages:Array.isArray(d.pages)&&d.pages.length?d.pages:memoryData.pages,bookTheme:d.bookTheme||"#6f4329"}}else{memoryData={pages:[{items:[{type:"image",url:"",caption:""},{type:"image",url:"",caption:""},{type:"image",url:"",caption:""},{type:"image",url:"",caption:""}]}],bookTheme:"#6f4329"}}renderMemory()},err=>{console.error(err);console.warn("Memory Book needs Firestore read rules for memoryBook/main")})}
+function renderMemory(){const pages=(memoryData.pages||[]).slice(0,100);if(memoryPage>=pages.length)memoryPage=Math.max(0,pages.length-1);$("memoryView").style.setProperty("--book",memoryData.bookTheme||"#6f4329");$("bookTheme").value=memoryData.bookTheme||"#6f4329";$("memoryAdminControls").hidden=!isAdmin();const spread=$("memorySpread");spread.innerHTML="";const page=pages[memoryPage]||{items:[]};const items=Array.from({length:4},(_,i)=>(page.items||[])[i]||{type:"image",url:"",caption:""});for(let sideIndex=0;sideIndex<2;sideIndex++){const side=document.createElement("div");side.className="memory-side";for(let j=0;j<2;j++){const item=items[sideIndex*2+j];const slot=document.createElement("div");slot.className="memory-slot";if(item.url){if(item.type==="video"){const wrap=document.createElement("div");wrap.className="memory-video";const thumb=document.createElement("div");thumb.className="memory-empty";thumb.textContent="▶ Putar video";thumb.style.cursor="pointer";thumb.addEventListener("click",()=>showMemoryMedia(item));wrap.append(thumb);slot.append(wrap)}else{const img=document.createElement("img");img.className="memory-media";img.src=item.url;img.alt=item.caption||"Foto kenangan";img.addEventListener("click",()=>showMemoryMedia(item));slot.append(img)}}else{const empty=document.createElement("div");empty.className="memory-empty";empty.textContent=isAdmin()?"＋ Tambahkan foto/video":"Belum ada kenangan";slot.append(empty)}const cap=document.createElement("div");cap.className="memory-caption";cap.textContent=item.caption||"✦ Kenangan ✦";slot.append(cap);side.append(slot)}spread.append(side)}$("memoryPageLabel").textContent="Halaman "+(memoryPage+1)+" / "+pages.length+" · 4 kenangan";$("prevMemoryPage").disabled=memoryPage<=0;$("nextMemoryPage").disabled=memoryPage>=pages.length-1;$("addMemoryPage").hidden=!isAdmin();$("addMemoryPage").disabled=pages.length>=100;$("addMemoryPage").textContent=pages.length>=100?"Batas 100 halaman tercapai":"＋ Tambah halaman (maks. 100)";$("editMemoryPage").hidden=!isAdmin();$("saveBookTheme").hidden=!isAdmin();$("editMemoryPage").textContent="✏️ Edit 4 media halaman ini"}
+function showMemoryMedia(item){const host=$("memoryFullscreenContent");host.innerHTML="";if(item.type==="video"){const v=document.createElement("video");v.src=item.url;v.controls=true;v.autoplay=true;v.playsInline=true;host.append(v)}else{const img=document.createElement("img");img.src=item.url;img.alt=item.caption||"Foto kenangan";host.append(img)}$("memoryFullscreen").classList.remove("memory-hidden")}
+$("openMemoryFromHome").addEventListener("click",openMemory);$("memoryBackBtn").addEventListener("click",showHome);$("openMemoryBook").addEventListener("click",()=>{$("memoryCoverPanel").classList.add("memory-hidden");$("memoryPagesPanel").classList.remove("memory-hidden");$("memoryPagesPanel").classList.remove("memory-open-anim");void $("memoryPagesPanel").offsetWidth;$("memoryPagesPanel").classList.add("memory-open-anim");renderMemory()});$("closeMemoryFullscreen").addEventListener("click",()=>{$("memoryFullscreen").classList.add("memory-hidden");$("memoryFullscreenContent").innerHTML=""});$("memoryFullscreen").addEventListener("click",e=>{if(e.target===$("memoryFullscreen")){$("memoryFullscreen").classList.add("memory-hidden");$("memoryFullscreenContent").innerHTML=""}});$("prevMemoryPage").addEventListener("click",()=>{memoryPage=Math.max(0,memoryPage-1);renderMemory()});$("nextMemoryPage").addEventListener("click",()=>{memoryPage=Math.min(memoryData.pages.length-1,memoryPage+1);renderMemory()});
+let memoryCurrentItems=[null,null,null,null];
+function editMemory(){if(!isAdmin())return;const page=(memoryData.pages||[])[memoryPage]||{items:[]};memoryCurrentItems=Array.from({length:4},(_,i)=>(page.items||[])[i]||{});[1,2,3,4].forEach((n,i)=>{const it=memoryCurrentItems[i];$("memoryType"+n).value=it.type||"image";$("memoryFile"+n).value="";$("memoryFile"+n).accept=$("memoryType"+n).value==="video"?"video/*":"image/*";$("memoryCurrent"+n).textContent=it.url?"Media saat ini tersimpan. Pilih file baru untuk menggantinya.":"Belum ada media dipilih.";$("memoryCaption"+n).value=it.caption||"";});$("memoryEditTitle").textContent="Edit 4 media halaman "+(memoryPage+1);$("memoryEditDialog").showModal()}
+[1,2,3,4].forEach(n=>$("memoryType"+n).addEventListener("change",()=>{$("memoryFile"+n).accept=$("memoryType"+n).value==="video"?"video/*":"image/*";$("memoryFile"+n).value="";}));
+$("editMemoryPage").addEventListener("click",editMemory);$("cancelMemoryEdit").addEventListener("click",()=>$("memoryEditDialog").close());
+$("memoryEditForm").addEventListener("submit",async e=>{e.preventDefault();if(!isAdmin())return alert("Hanya admin yang bisa mengedit Memory Book.");const btn=$("saveMemoryPageBtn");btn.disabled=true;btn.textContent="Mengunggah...";try{const items=[];for(let n=1;n<=4;n++){const type=$("memoryType"+n).value,file=$("memoryFile"+n).files[0],old=memoryCurrentItems[n-1]||{};let url=old.url||"";if(file){if(type==="image"&&!file.type.startsWith("image/"))throw new Error("Pilih file gambar untuk media bertipe Foto.");if(type==="video"&&!file.type.startsWith("video/"))throw new Error("Pilih file video untuk media bertipe Video.");const max=type==="video"?150*1024*1024:15*1024*1024;if(file.size>max)throw new Error(type==="video"?"Video terlalu besar. Maksimum 150 MB per file.":"Foto terlalu besar. Maksimum 15 MB per file.");if(!currentUser)throw new Error("Admin harus login untuk mengunggah media.");const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");const ref=storage.ref().child("memoryBook/"+currentUser.uid+"/page_"+(memoryPage+1)+"_"+n+"_"+Date.now()+"_"+safeName);await ref.put(file,{contentType:file.type});url=await ref.getDownloadURL();}items.push({type,url,caption:$("memoryCaption"+n).value.trim()});}const pages=[...(memoryData.pages||[])];pages[memoryPage]={items};await db.collection("memoryBook").doc("main").set({pages,bookTheme:memoryData.bookTheme||"#6f4329",updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});$("memoryEditDialog").close();alert("Empat slot kenangan berhasil disimpan.");}catch(err){console.error(err);alert("Gagal menyimpan Memory Book ("+(err.code||err.message||"unknown")+"). Periksa Firestore Rules dan Firebase Storage Rules.");}finally{btn.disabled=false;btn.textContent="Unggah & simpan halaman";}});
+$("addMemoryPage").addEventListener("click",async()=>{if(!isAdmin())return;const currentPages=memoryData.pages||[];if(currentPages.length>=100){alert("Memory Book sudah mencapai batas 100 halaman.");return}const pages=[...currentPages,{items:[{type:"image",url:"",caption:""},{type:"image",url:"",caption:""},{type:"image",url:"",caption:""},{type:"image",url:"",caption:""}]}];try{await db.collection("memoryBook").doc("main").set({pages,bookTheme:memoryData.bookTheme||"#6f4329",updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});memoryPage=pages.length-1;renderMemory()}catch(err){alert("Gagal menambah halaman ("+(err.code||"unknown")+"). Periksa Firestore Rules untuk memoryBook.")}});
+$("saveBookTheme").addEventListener("click",async()=>{if(!isAdmin())return;const bookTheme=$("bookTheme").value;try{await db.collection("memoryBook").doc("main").set({pages:memoryData.pages,bookTheme,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});memoryData.bookTheme=bookTheme;renderMemory();alert("Warna Memory Book disimpan untuk semua pengunjung.")}catch(err){alert("Gagal menyimpan warna buku ("+(err.code||"unknown")+"). Periksa Firestore Rules untuk memoryBook.")}});
+
+auth.onAuthStateChanged(user=>{currentUser=user;setControls();if(unsubMembers){unsubMembers();unsubMembers=null}if(unsubPrefs){unsubPrefs();unsubPrefs=null}members=[];render();if(user){loadPrefs(user.uid)}else{personalPrefs={theme:"neon",wallpaperUrl:""};applyAppearance();showHome()}startMembersListener();startMemoryListener()});
+})();
+</script>
+</body>
+</html>
